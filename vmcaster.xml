@@ -12,5 +12,5 @@
 <partintro>
 <para>Initial import from README.md.</para>
 </partintro>
-
+<xi:include href="README.md.xml" />
 </part>
