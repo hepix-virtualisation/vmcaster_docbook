@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE part PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+ "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+<!ENTITY % sharedents SYSTEM "shared-entities.xml" >
+%sharedents;
+]>
+<part id="vmcaster" xmlns:xi="http://www.w3.org/2001/XInclude">
+<?dbhtml dir="part-org"?>
+
+<title>vmcaster</title>
+<partintro>
+<para>Initial import from README.md.</para>
+</partintro>
+
+</part>
