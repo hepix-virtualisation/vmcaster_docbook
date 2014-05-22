@@ -13,6 +13,7 @@
 <para>Initial import from README.md.</para>
 </partintro>
 <xi:include href="README.md.xml" />
+<xi:include href="configuration.xml" />
 <xi:include href="appendix.xml" />
 
 </part>
