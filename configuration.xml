@@ -11,7 +11,48 @@
       <firstname>Owen</firstname>
       <surname>Synge</surname>
     </author>
-  </info>
+  </info>  
+  <section id="Environment Variables.">
+    <title>Environment Variables.</title>
+    <itemizedlist>
+      <listitem>HOME Used as a prefix for configuration files and certificates.</listitem>
+      <listitem>VMCASTER_KEY Path to the private key for the signing of image lists.</listitem>
+      <listitem>VMCASTER_CERT Path to the certificate for the signing of image lists.</listitem>
+      <listitem>VMCASTER_CFG Path to the configuration file for vmcaster.</listitem>
+      <listitem>VMCASTER_RDBMS SQLite based connection string, This defaults to 'sqlite:///vmcaster.db'.
+This URL refers to the current working directory, to use an absolute path with 
+SQLite, add an extra slash to the URL like syntax.</listitem>
+      <listitem>VMCASTER_LOG_CONF vmcaster uses pythons standard logging module, this sets the configuration file 
+to be used for logging. For specifications on how to set this up see the python
+logging documentation.</listitem>
+      <listitem>VMCASTER_X509_DIR Sets the default directory for the users x.509 certificates. If not set this 
+value is defaulted to "$HOME/.globus".</listitem>
+      <listitem>VMCASTER_X509_KEY Sets the default path for the users x.509 user key. If not set this 
+value is defaulted to "$HOME/.globus/userkey.pem".</listitem>
+      <listitem>VMCASTER_X509_CERT Sets the default path for the users x.509 user key. If not set this 
+value is defaulted to "$HOME/.globus/usercert.pem".</listitem>
+    </itemizedlist>
+  </section>
   <title>Configuration</title>
-  
+    <section id="Deployment">
+    <title>Deployment</title>
+    <para>It is wise to deploy an "image list subscriber" so you can check for errors with 
+vmcaster as your "image list" publisher. vmcatcher 
+(http://github.com/hepix-virtualisation/vmcatcher) is an "image list subscriber" 
+that has almost the same dependencies as vmcatcher.</para>
+    <section id="DeploymentSecurityNote">
+      <title>Security note</title>
+      <para>It is more secure to use "https" than "http" for serving the image list. While 
+the authenticity of the image list is secured by the image list signature, the 
+signature cannot prevent "man in the middle" presenting an old signed image list.</para>
+      <para>For serving images http is as secure as https, as the authenticity of the image 
+is secured by the image list's signature, thus the worst a man in the middle 
+attack can do with images is provide a denial of service when the image does not 
+match the sha512 hash it will be detected and rejected.</para>
+      <para>It is expected future versions of vmcatcher will issue a warning when 
+subscribing to and retrieving image lists from unauthenticated hosts. Image list 
+subscribers will prefer not to see these warnings, and may decide to only trust
+image lists hosted on authenticated servers.</para>
+    </section>
+  </section>
 </chapter>

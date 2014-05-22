@@ -13,6 +13,12 @@
     </author>
   </info>
   <title>Appendix</title>
+  <section id="Road map">
+    <title>Road map</title>
+    <para>The code should also be publishable into a message Queue service provided by a 
+cloud provider allowing unpublished images to be shared. This work has not been 
+started.</para>
+  </section>
   <para>If this application is not suitable for your use case it should not be forgotten
 that SMIME and json are common standards and can be created in many ways. Below 
 is an example of how to sign a message using SMIME.</para>

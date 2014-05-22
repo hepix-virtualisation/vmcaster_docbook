@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+    "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+<!ENTITY % sharedents SYSTEM "shared-entities.xml" >
+%sharedents;
+]>
+<chapter id="howto">
+  <info>
+    <author>
+      <firstname>Owen</firstname>
+      <surname>Synge</surname>
+    </author>
+  </info>
+   <title>Howto</title>
+      <section id="HowTo">
+      <title>Howto</title>
+      <section id="HowToUpdate Image">
+      <title>HowToUpdate Image</title>
+      <para>Now we can select an image to and update it.</para>
+      <para>$ vmcaster \
+        --upload-image /var/lib/libvirt/images/hudson-slave-vm06.desy.de.img \
+        --select-image 7b1aea46-8776-4447-9450-00e720fc042c</para>
+      <para>TIP: If you are setting up vmcaster for the first time, you may be presented 
+with errors but need more information to debug. You may find adding one or more 
+"--verbose" parameters to the command will give useful extra debugging 
+information.</para>
+      <para>Shows the image list as it would be made.</para>
+      <para>$ vmcaster \
+        --select-imagelist 9b6fad19-d913-4cca-b77d-c4b4fcd9dc36 \
+        --show-imagelist</para>
+      <para>which should now have the "hv:uri" set to the correct path to download the image
+that was just updated, including the "sl:sha512" is now set and the value of 
+"hv:version" has incremented the version number.
+Once you are happy with the new image list, it is time to publish this.</para>
+      </section>
+      <section id="HowToUpdate Image List">
+      <title>HowToUpdate Image List</title>
+      <para>First check the image list is as you expect:</para>
+      <para>$ vmcaster \
+        --select-imagelist 9b6fad19-d913-4cca-b77d-c4b4fcd9dc36 \
+        --show-imagelist</para>
+      <para>To update and sign image list.</para>
+      <para>$ vmcaster \
+        --select-imagelist 9b6fad19-d913-4cca-b77d-c4b4fcd9dc36 \
+        --upload-imagelist</para>
+    </section>
+    </section> 
+    <para>Clients</para>
+    <para>Currently only one image list subscriber exists called vmcatcher.</para>
+    <para>https://github.com/hepix-virtualisation/vmcatcher</para>   
+  
+</chapter>
