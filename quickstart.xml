@@ -55,7 +55,7 @@ project. We should now import the image list.</para>
     <para>To list images:</para>
     <para>$ vmcaster  --list-image</para>
     <para>To display the imagelist:</para>
-    <programlisting>&prompt-user;  <userinput>vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
     --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
     --show-imagelist</userinput></programlisting>
     <para>Image list Object's "dc:identifier" is a special property of an image list, this 
@@ -67,24 +67,24 @@ an that of image list "dc:identifier". </para>
 images "dc:identifier". These UUIDs should be globally unique and consequently 
 the UUID should be generated using a UUID generator using suitable seeds. With 
 Debian, Redhat and Scientific Linux I use the following UUID generator.</para>
-    <para>$ uuidgen 
-    70d9816a-2f6b-4aea-9412-16716b7539b7</para>
+    <programlisting>&prompt-user; <userinput>uuidgen</userinput>
+70d9816a-2f6b-4aea-9412-16716b7539b7</programlisting>
     <para>To show image meta data:</para>
-    <para>$ vmcaster \
-        --select-image b36d8b24-c63c-4fd1-ba13-bda6877207e8 \
-        --show-image</para>
+    <programlisting>&prompt-user; <userinput>vmcaster \
+    --select-image b36d8b24-c63c-4fd1-ba13-bda6877207e8 \
+    --show-image</userinput></programlisting>
     <para>To show endorser meta data:</para>
-    <para>$ vmcaster \
-        --select-endorser "/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=buncic/CN=379010/CN=Predrag Buncic" \
-        --show-endorser</para>
+    <programlisting>&prompt-user; <userinput>vmcaster \
+    --select-endorser "/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=buncic/CN=379010/CN=Predrag Buncic" \
+    --show-endorser</userinput></programlisting>
     <para>To create an Endorser:</para>
-    <para>$vmcaster \
-        --select-endorser "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge" \
-        --add-endorser</para>
+    <programlisting>&prompt-user; <userinput>vmcaster \
+    --select-endorser "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge" \
+    --add-endorser</userinput></programlisting>
     <para>To create an image list:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-imagelist  e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
-        --add-imagelist</para>
+        --add-imagelist</userinput></programlisting>
     <para>To create an image:</para>
     <para>$ vmcaster \
         --select-image b36d8b24-c63c-4fd1-ba13-bda6877207e8 \
