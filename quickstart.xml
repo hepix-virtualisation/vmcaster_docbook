@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+    "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+<!ENTITY % sharedents SYSTEM "shared-entities.xml" >
+%sharedents;
+]>
+<chapter id="quickstart">
+  <info>
+    <author>
+      <firstname>Owen</firstname>
+      <surname>Synge</surname>
+    </author>
+  </info>
+  <title>Quick Start</title>
+    <section id="Quick Start">
+    <title>Quick Start</title>
+    <para>Please note this application has online help.</para>
+    <para>$ vmcaster --help</para>
+    <para>This will always have an up to date list of command line options and state if 
+they take parameters.</para>
+    <para>vmcaster uses the standard python logging library. To make things simpler the 
+vmcaster command line has "--verbose" and "--quiet" command line options which 
+respectively makes the logging more or less detailed. You can also specify a 
+logging configuration file using "--logcfg". Details of setting up pythons 
+logging library and its associated configuration file are out of scope for this 
+document.</para>
+    <para>vmcaster requires a configuration file, this file should exist in either 
+"/etc/vmcaster/vmcaster.cfg" or "~/.vmcaster.cfg". An example template is by 
+default installed as "/etc/vmcaster/vmcaster.cfg.template". To get started:</para>
+    <para>$ cp /etc/vmcaster/vmcaster.cfg.template ~/.vmcaster.cfg</para>
+    <para>When it comes to uploading images and image lists you will need to add to this
+file for your own site specific settings.</para>
+  </section>  
+  <section id="Background">
+    <title>Background</title>
+    <para>An image list contains an array of images and an array of endorsers. Image lists 
+images and endorsers can all have key value pair attributes. Some of these 
+attributes are required in every image list. Similarly, endorsers and images have 
+a set of required meta data. Every image list must have an endorser, but no 
+images are allowed.</para>
+    <para>The easiest way to start playing with image list publishing is to copy some one 
+else's hard work.</para>
+    <para>$ wget https://cernvm.cern.ch/releases/image.list \
+        --no-check-certificate --output-document CernVM.list.smime</para>
+    <para>This is a large image list from the CernVm project. I provides a lot of images 
+in a lot of formats so as many customers as possible benefit from the CernVM 
+project. We should now import the image list.</para>
+    <para>$ vmcaster \
+         --import-imagelist-smime CernVM.list.smime</para>
+    <para>To check the image has been imported correctly we can use the command:</para>
+    <para>$ vmcaster  --list-imagelist</para>
+    <para>To list the endorsers,</para>
+    <para>$ vmcaster  --list-endorser</para>
+    <para>To list images:</para>
+    <para>$ vmcaster  --list-image</para>
+    <para>To display the imagelist:</para>
+    <para>$ vmcaster \
+       --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
+       --show-imagelist</para>
+    <para>Image list Object's "dc:identifier" is a special property of an image list, this 
+is the object identifier and can be used to select items for creation, deletion 
+or modification. Each Object has an Identifier, the Endorser object identifier 
+is the value corresponding with "hv:dn". Image objects identifier is the same as 
+an that of image list "dc:identifier". </para>
+    <para>UUIDs are used for the image list "dc:identifier" and also
+images "dc:identifier". These UUIDs should be globally unique and consequently 
+the UUID should be generated using a UUID generator using suitable seeds. With 
+Debian, Redhat and Scientific Linux I use the following UUID generator.</para>
+    <para>$ uuidgen 
+    70d9816a-2f6b-4aea-9412-16716b7539b7</para>
+    <para>To show image meta data:</para>
+    <para>$ vmcaster \
+        --select-image b36d8b24-c63c-4fd1-ba13-bda6877207e8 \
+        --show-image</para>
+    <para>To show endorser meta data:</para>
+    <para>$ vmcaster \
+        --select-endorser "/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=buncic/CN=379010/CN=Predrag Buncic" \
+        --show-endorser</para>
+    <para>To create an Endorser:</para>
+    <para>$vmcaster \
+        --select-endorser "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge" \
+        --add-endorser</para>
+    <para>To create an image list:</para>
+    <para>$ vmcaster \
+        --select-imagelist  e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
+        --add-imagelist</para>
+    <para>To create an image:</para>
+    <para>$ vmcaster \
+        --select-image b36d8b24-c63c-4fd1-ba13-bda6877207e8 \
+        --add-image</para>
+    <para>To delete an Endorser:</para>
+    <para>$ vmcaster \
+        --select-endorser "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge" \
+        --del-endorser</para>
+    <para>To delete an image list:</para>
+    <para>$ vmcaster \
+        --select-imagelist  e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
+        --del-imagelist</para>
+    <para>To delete an image:</para>
+    <para>$ vmcaster \
+        --select-image b36d8b24-c63c-4fd1-ba13-bda6877207e8 \
+        --del-image</para>
+    <para>To add an image to an image list:</para>
+    <para>$ vmcaster \
+        --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
+        --imagelist-add-image \
+        --select-image 3a1df02c-121a-461d-b720-521903ef99f0</para>
+    <para>To remove an image from the image list:</para>
+    <para>$ vmcaster \
+        --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
+        --imagelist-del-image \
+        --select-image 3a1df02c-121a-461d-b720-521903ef99f0</para>
+    <para>To add an endorser to an image list:</para>
+    <para>$ vmcaster \
+        --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
+        --imagelist-add-endorser \
+        --select-endorser "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge"</para>
+    <para>To remove an image from the image list:</para>
+    <para>$ vmcaster \
+        --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
+        --imagelist-del-endorser \
+        --select-endorser "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge"</para>
+    <para>To change or add meta data to an endorser:</para>
+    <para>$ vmcaster \
+        --select-endorser  "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge" \
+        --key-set-endorser "hv:ca" \
+        --key-value-endorser "/DC=ch/DC=cern/CN=CERN Trusted Certification Authority"</para>
+    <para>To change or add meta data to an image list:</para>
+    <para>$ vmcaster \
+        --select-imagelist e38a3fd2-0ed8-11e2-873a-001cc0beb420 \
+        --key-set-imagelist "dc:description" \
+        --key-value-imagelist "DESY Image List SHaring service" </para>
+    <para>To change or add meta data to an image:</para>
+    <para>$ vmcaster \
+        --select-image "2934ec2b-7a67-4b96-ba16-6775d66898d0" \
+        --key-set-image "hv:uri" \
+        --key-value-image "https://cernvm.cern.ch/releases/17/cernvm-desktop-2.6.0-4-1-x86.vpc.gz"</para>
+    <para>To delete meta data from endorser:</para>
+    <para>$ vmcaster \
+        --select-endorser  "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge" \
+        --key-del-endorser "hv:ca"    </para>
+    <para>To delete meta data from image list:</para>
+    <para>$ vmcaster \
+        --select-imagelist e38a3fd2-0ed8-11e2-873a-001cc0beb420 \
+        --key-del-imagelist "dc:description"</para>
+    <para>To delete meta data from image:</para>
+    <para>$ vmcaster \
+        --select-image "2934ec2b-7a67-4b96-ba16-6775d66898d0" \
+        --key-del-image "hv:uri"</para>
+    <para>Object identifiers cannot be modified with vmcaster, they can only be created 
+and destroyed,. This is intentional to prevent accidental errors.</para>
+    <para>Image lists with clashing  "dc:identifier" value is considered disruptive at 
+best and hostile at worst, and it will be noticed by image list subscribers. 
+Similarly not having your endorser details correctly is stated in the endorser.</para>
+    <para>To change "dc:identifier" this we need to dump the image list to file, change 
+the image list UUID, all images we wish to keep.</para>
+    <para>$ vmcaster \
+        --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
+        --show-imagelist > output.json
+    $ OLD_LIST_UUID=e55c1afe-0a62-4d31-a8d7-fb8c825f92a2
+    $ NEW_LIST_UUID=`uuidgen`
+    $ sed -e "s/${OLD_LIST_UUID}/${NEW_LIST_UUID}/" \
+        output.json  > input.json
+    $ vmcaster --import-imagelist-json input.json</para>
+    <para>It might be easiest to edit the JSON with a conventional text editor. As you 
+also want to change many other variables. Note that the new UUID is generated 
+using a UUID generator.</para>
+    <para>It is recommended that only experienced users with good reason share images 
+between  image lists (primarily disk space and as part of automation). For this 
+reason while editing the  JSON. So it is probably wise to change all image 
+object identifiers ("dc:identifier" for each image.).</para>
+    <para>All changes to the original image list can be reverted by re - importing an 
+image list previously stored as a JSON file.</para>
+    <para>$ vmcaster --import-imagelist-json input.json</para>
+    <para>To Add an image to an image list:</para>
+    <para>$ vmcaster \
+        --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
+        --imagelist-add-image \
+        --select-image 3a1df02c-121a-461d-b720-521903ef99f0</para>
+    <para>The final setting up task is now to set up the configuration file.</para>
+  </section>  
+
+</chapter>

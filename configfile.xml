@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+    "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+<!ENTITY % sharedents SYSTEM "shared-entities.xml" >
+%sharedents;
+]>
+<chapter id="configfile">
+  <info>
+    <author>
+      <firstname>Owen</firstname>
+      <surname>Synge</surname>
+    </author>
+  </info>
+   <title>config file</title>
+    <section id="Configuration file">
+    <title>Configuration file</title>
+    
+    <para>The configuration file for vmcaster is used to define the hosts and parameters 
+needed to update images and image lists on the servers publishing the image list.</para>
+    <para>The configuration file is expected system wide at "/etc/vmcaster/vmcaster.cfg" 
+or per user at "~/.vmcaster.cfg". The image list is in ini/cfg format with all 
+values being stored as json. Each section will map to one or more image lists 
+and provides the necessary information to "vmcaster" to update and upload image 
+lists.</para>
+    <para>The following section is taken from my image list management configuration.</para>
+    <para>[example.org]
+    server = "www.example.org"
+    protocol = "scp"
+    uriMatch = "https://www.example.org/repos/prod/vmcaster"
+    uriReplace = "user_name@www.example.org:/export/example.org/prod/vmcaster"</para>
+    <para>This states that all image lists to be published on the server "www.example.org",
+should be updated using the "scp" protocol, and that all writes corresponding 
+with a prefix of "https://www.example.org/repos/prod/vmcaster" should be updated 
+using a prefix of "user_name@www.example.org:/export/example.org/prod/vmcaster". 
+The section name is not significant and is just to group the attributes.</para>
+    <section id="protocols">
+      <title>protocols</title>
+      <itemizedlist>
+        <listitem>scp : This is the standard file transfer tool from the openssh project. </listitem>
+        <listitem>local : This is when you share a file system with the public server.</listitem>
+        <listitem>egiappdb : This is the native protocol for the EGI AppDB. This allows you to use 
+vmcaster as a command line tool for updating imagelists.</listitem>
+        <listitem>gsidcap : For a long time this was the standard POSIX like write protocol for a file 
+storage server called dCache which specialises in storing very large quantities 
+of data at the lowest price possible.</listitem>
+      </itemizedlist>
+      <para>## Protocols : Example 'local'</para>
+      <para>example using the local file system:</para>
+      <para>[foo]
+    server = "gridvirt.desy.de"
+    protocol = "local"
+    uriMatch = "https://gridvirt.desy.de/"
+    uriReplace = "/tmp/"</para>
+      <para>Note: Publishing an image list without any images is the best way to decommission
+an image list when no images are expected to be requested ever again.</para>
+      <para>## Protocols : Example 'egiappdb'</para>
+      <para>Example publishing to the 'egiappdb'</para>
+      
+      <para>[appdb-dev]
+    server = "vmcaster.appdb-dev.marie.hellasgrid.gr"
+    protocol = "egiappdb"
+    uriMatch = ".*"
+    uriReplace = "egiappdb://example_user@vmcaster.appdb-dev.marie.hellasgrid.gr/vmlist/submit/sso/" 
+    
+    [appdb] 
+    server = "vmcaster.appdb.egi.eu" 
+    protocol = "egiappdb" 
+    uriMatch = ".*" 
+    uriReplace = "egiappdb://_YOUR_EGI_SSO_USERNAME_@vmcaster.appdb.egi.eu/vmlist/submit/sso/"</para>
+      <para>A second example using the local file system:</para>
+      <para>[foo]
+    server = "gridvirt.desy.de"
+    protocol = "local"
+    uriMatch = "https://gridvirt.desy.de/"
+    uriReplace = "/tmp/"</para>
+      <para>Note: Publishing an image list without any images is the best way to decommission
+an image list when no images are expected to be requested ever again.</para>
+    </section>    
+    <section id="uriMatch and uriReplace">
+      <title>uriMatch and uriReplace</title>
+      <para>It should be noted that the external download uri is used to generate upload path that is used.
+</para>
+      <para>The meta data in the images lists, 'hv:uri' is used to generate the upload
+path for the image list. Each image in an imagelist must also has a 'hv:uri',
+this is also used to generate the path for uploading images. Processed with 
+the 'regular expression' matched by 'uriMatch' and replaced with value of 
+the key in 'uriReplace'. The best uriMatch is the most specific, but due 
+to the flexibility it offers the user even very generic 'uriMatch' values 
+can be used.</para>
+      <para>uriMatch = ".*/"</para>
+      <para>This is a near universal 'uriMatch' value as it will always leave some part 
+of the 'filename' of the External URI in the upload path. Normally I would
+recommend including at least the hostname and the shared root path for example:</para>
+      <para>uriMatch = "https://www.example.org/repos/imagelist"</para>
+      <para>Only in the case of uploading imagelists over the 'egiappdb' should you ever 
+use the expression ".*" as this will result in all files being uploaded to 
+the same location.</para>
+    </section> 
+
+ </section> 
+</chapter>
