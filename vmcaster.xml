@@ -12,9 +12,11 @@
 <partintro>
 <para>Initial import from README.md.</para>
 </partintro>
-<xi:include href="README.md.xml" />
+<xi:include href="introduction.xml" />
+<xi:include href="quickstart.xml" />
 <xi:include href="howto.xml" />
 <xi:include href="configuration.xml" />
-<xi:include href="appendix.xml" />
+<xi:include href="configfile.xml" />
 
+<xi:include href="appendix.xml" />
 </part>

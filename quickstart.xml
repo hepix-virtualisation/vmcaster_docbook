@@ -55,9 +55,9 @@ project. We should now import the image list.</para>
     <para>To list images:</para>
     <para>$ vmcaster  --list-image</para>
     <para>To display the imagelist:</para>
-    <para>$ vmcaster \
-       --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
-       --show-imagelist</para>
+    <programlisting>&prompt-user;  <userinput>vmcaster \
+    --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
+    --show-imagelist</userinput></programlisting>
     <para>Image list Object's "dc:identifier" is a special property of an image list, this 
 is the object identifier and can be used to select items for creation, deletion 
 or modification. Each Object has an Identifier, the Endorser object identifier 
