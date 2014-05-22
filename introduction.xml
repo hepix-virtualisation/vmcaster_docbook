@@ -16,13 +16,13 @@
   <section id="organisation-fedc-intro-intro">
     <title>Introduction</title>
     <para>Vmcaster is a simple tool for managing and updating your published 
-virtual machines image lists. Following the HEPiX image list format.</para>    
-    <para>vmcaster software is available here:</para>
-    <para>https://github.com/hepix-virtualisation/vmcaster</para>
-    <para>Users of this application should read "security-related policy requirements for 
+virtual machines image lists. Following the HEPiX image list format.</para>
+    
+    <ulink url="https://github.com/hepix-virtualisation/vmcaster">The vmcaster software is open source and 
+    available at github</ulink>
+    <para>Users of this application should read <ulink url="https://edms.cern.ch/document/1080777">security-related policy requirements for 
 the generation and endorsement of trusted virtual machine (VM) images for use on 
-the Grid". The URL is shown below.</para>
-    <para>https://edms.cern.ch/document/1080777</para>
+the Grid".</ulink></para>
     <para>This tool is designed to aid "endorsers" as defined in the security policy, 
 and anyone who wants to publish virtual machine images in a way where 
 tampering will be detected.</para>
