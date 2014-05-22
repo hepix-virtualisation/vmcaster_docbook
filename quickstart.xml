@@ -86,68 +86,68 @@ Debian, Redhat and Scientific Linux I use the following UUID generator.</para>
         --select-imagelist  e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
         --add-imagelist</userinput></programlisting>
     <para>To create an image:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-image b36d8b24-c63c-4fd1-ba13-bda6877207e8 \
-        --add-image</para>
+        --add-image</userinput></programlisting>
     <para>To delete an Endorser:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-endorser "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge" \
-        --del-endorser</para>
+        --del-endorser</userinput></programlisting>
     <para>To delete an image list:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-imagelist  e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
-        --del-imagelist</para>
+        --del-imagelist</userinput></programlisting>
     <para>To delete an image:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-image b36d8b24-c63c-4fd1-ba13-bda6877207e8 \
-        --del-image</para>
+        --del-image</userinput></programlisting>
     <para>To add an image to an image list:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
         --imagelist-add-image \
-        --select-image 3a1df02c-121a-461d-b720-521903ef99f0</para>
+        --select-image 3a1df02c-121a-461d-b720-521903ef99f0</userinput></programlisting>
     <para>To remove an image from the image list:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
         --imagelist-del-image \
-        --select-image 3a1df02c-121a-461d-b720-521903ef99f0</para>
+        --select-image 3a1df02c-121a-461d-b720-521903ef99f0</userinput></programlisting>
     <para>To add an endorser to an image list:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
         --imagelist-add-endorser \
-        --select-endorser "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge"</para>
+        --select-endorser "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge"</userinput></programlisting>
     <para>To remove an image from the image list:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
         --imagelist-del-endorser \
-        --select-endorser "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge"</para>
+        --select-endorser "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge"</userinput></programlisting>
     <para>To change or add meta data to an endorser:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-endorser  "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge" \
         --key-set-endorser "hv:ca" \
-        --key-value-endorser "/DC=ch/DC=cern/CN=CERN Trusted Certification Authority"</para>
+        --key-value-endorser "/DC=ch/DC=cern/CN=CERN Trusted Certification Authority"</userinput></programlisting>
     <para>To change or add meta data to an image list:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-imagelist e38a3fd2-0ed8-11e2-873a-001cc0beb420 \
         --key-set-imagelist "dc:description" \
-        --key-value-imagelist "DESY Image List SHaring service" </para>
+        --key-value-imagelist "DESY Image List SHaring service"</userinput></programlisting>
     <para>To change or add meta data to an image:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-image "2934ec2b-7a67-4b96-ba16-6775d66898d0" \
         --key-set-image "hv:uri" \
-        --key-value-image "https://cernvm.cern.ch/releases/17/cernvm-desktop-2.6.0-4-1-x86.vpc.gz"</para>
+        --key-value-image "https://cernvm.cern.ch/releases/17/cernvm-desktop-2.6.0-4-1-x86.vpc.gz"</userinput></programlisting>
     <para>To delete meta data from endorser:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-endorser  "/C=DE/O=GermanGrid/OU=DESY/CN=Owen Synge" \
-        --key-del-endorser "hv:ca"    </para>
+        --key-del-endorser "hv:ca"</userinput></programlisting>
     <para>To delete meta data from image list:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-imagelist e38a3fd2-0ed8-11e2-873a-001cc0beb420 \
-        --key-del-imagelist "dc:description"</para>
+        --key-del-imagelist "dc:description"</userinput></programlisting>
     <para>To delete meta data from image:</para>
-    <para>$ vmcaster \
+    <programlisting>&prompt-user; <userinput>vmcaster \
         --select-image "2934ec2b-7a67-4b96-ba16-6775d66898d0" \
-        --key-del-image "hv:uri"</para>
+        --key-del-image "hv:uri"</userinput></programlisting>
     <para>Object identifiers cannot be modified with vmcaster, they can only be created 
 and destroyed,. This is intentional to prevent accidental errors.</para>
     <para>Image lists with clashing  "dc:identifier" value is considered disruptive at 
@@ -155,14 +155,14 @@ best and hostile at worst, and it will be noticed by image list subscribers.
 Similarly not having your endorser details correctly is stated in the endorser.</para>
     <para>To change "dc:identifier" this we need to dump the image list to file, change 
 the image list UUID, all images we wish to keep.</para>
-    <para>$ vmcaster \
-        --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
-        --show-imagelist > output.json
-    $ OLD_LIST_UUID=e55c1afe-0a62-4d31-a8d7-fb8c825f92a2
-    $ NEW_LIST_UUID=`uuidgen`
-    $ sed -e "s/${OLD_LIST_UUID}/${NEW_LIST_UUID}/" \
-        output.json  > input.json
-    $ vmcaster --import-imagelist-json input.json</para>
+    <programlisting>&prompt-user; <userinput>vmcaster \
+    --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
+    --show-imagelist > output.json</userinput>
+&prompt-user; <userinput>OLD_LIST_UUID=e55c1afe-0a62-4d31-a8d7-fb8c825f92a2</userinput>
+&prompt-user; <userinput>NEW_LIST_UUID=`uuidgen`</userinput>
+&prompt-user; <userinput>sed -e "s/${OLD_LIST_UUID}/${NEW_LIST_UUID}/" \
+        output.json  > input.json</userinput>
+&prompt-user; <userinput>vmcaster --import-imagelist-json input.json</userinput></programlisting>
     <para>It might be easiest to edit the JSON with a conventional text editor. As you 
 also want to change many other variables. Note that the new UUID is generated 
 using a UUID generator.</para>
@@ -174,10 +174,10 @@ object identifiers ("dc:identifier" for each image.).</para>
 image list previously stored as a JSON file.</para>
     <para>$ vmcaster --import-imagelist-json input.json</para>
     <para>To Add an image to an image list:</para>
-    <para>$ vmcaster \
-        --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
-        --imagelist-add-image \
-        --select-image 3a1df02c-121a-461d-b720-521903ef99f0</para>
+    <programlisting>&prompt-user; <userinput>vmcaster \
+    --select-imagelist e55c1afe-0a62-4d31-a8d7-fb8c825f92a2 \
+    --imagelist-add-image \
+    --select-image 3a1df02c-121a-461d-b720-521903ef99f0</userinput></programlisting>
     <para>The final setting up task is now to set up the configuration file.</para>
   </section>  
 
